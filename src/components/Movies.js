@@ -1,35 +1,24 @@
 import React from "react";
 import styled from "styled-components";
+import {Link} from "react-router-dom";
+import { selectMovies } from "../features/movie/MovieSlice";
+import { useSelector } from "react-redux";
 
 function Movies() {
+  const movies = useSelector(selectMovies);
+
   return (
     <Container>
       <h4>Recommended for You</h4>
       <Content>
-        <Wrap>
-          <img src="" />
-        </Wrap>
-        <Wrap>
-          <img src="" />
-        </Wrap>
-        <Wrap>
-          <img src="" />
-        </Wrap>
-        <Wrap>
-          <img src="" />
-        </Wrap>
-        <Wrap>
-          <img src="" />
-        </Wrap>
-        <Wrap>
-          <img src="" />
-        </Wrap>
-        <Wrap>
-          <img src="" />
-        </Wrap>
-        <Wrap>
-          <img src="" />
-        </Wrap>
+        {movies &&
+          movies.map((movie) => (
+            <Wrap key={movie.id}>
+              <Link to={'/detail/${movie.id}'}>
+              <img src={movie.CardImg} alt={movie.title} />
+              </Link>
+            </Wrap>
+          ))}
       </Content>
     </Container>
   );
@@ -46,13 +35,13 @@ const Content = styled.div`
 `;
 
 const Wrap = styled.div`
-border-radius: 10px;
-cursor: pointer;
-overflow: hidden;
-border:v3px solid rgba(249, 249, 249, 0.1);
-box-shadow: rgba(0 0 0 / 69%) opx 26px 30px -10px,
-rgb(0 0 0 / 73%) 0px 16px 10px -10px;
-transition: all 250ms cubic-beizer(0.25, 0.46, 0.45, 0.94) 0s;
+  border-radius: 10px;
+  cursor: pointer;
+  overflow: hidden;
+  border: v3px solid rgba(249, 249, 249, 0.1);
+  box-shadow: rgba(0 0 0 / 69%) opx 26px 30px -10px,
+    rgb(0 0 0 / 73%) 0px 16px 10px -10px;
+  transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
 
   img {
     width: 100%;
@@ -60,10 +49,10 @@ transition: all 250ms cubic-beizer(0.25, 0.46, 0.45, 0.94) 0s;
     object-fit: cover;
   }
 
-  &:hover{
+  &:hover {
     transform: scale(1.05);
     box-shadow: rgb(0 0 0 / 80%) 0px 40px 58px -16px,
-    rgba(0 0 0 / 72%) 0px 30px 22px -10px;
+      rgba(0 0 0 / 72%) 0px 30px 22px -10px;
     border-color: rgba(249, 249, 249, 0.8);
   }
 `;
