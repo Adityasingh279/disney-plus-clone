@@ -5,53 +5,51 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
 function ImgSlider() {
-    let settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll:1,
-        autoplay: true,
-    }
+  let settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+  };
 
   return (
-<Carousel {...settings}>
-    <Wrap>
-        <img src="/images/slider-badging.jpg" alt="Slider 1"/>
-    </Wrap>
-    <Wrap>
-        <img src="/images/slider-badag.jpg" alt="Slider 2"/>
-    </Wrap>
-</Carousel>
+    <Carousel {...settings}>
+      <Wrap>
+        <img src="/images/slider-badging.jpg" alt="Slider 1" />
+      </Wrap>
+      <Wrap>
+        <img src="/images/slider-badag.jpg" alt="Slider 2" />
+      </Wrap>
+    </Carousel>
   );
 }
 
 export default ImgSlider;
 
 const Carousel = styled(Slider)`
-margin-top: 20px;
+  margin-top: 20px;
 
-ul li button {
-    &:before{
-        font-size: 10px;
-        color: rgb(150, 158, 171);
-
+  ul li button {
+    &:before {
+      font-size: 10px;
+      color: rgb(150, 158, 171);
     }
-}
+  }
 
-li.slick-active button:before{
+  li.slick-active button:before {
     color: white;
-}
+  }
 
-.slick-list{
+  .slick-list {
     overflow: visible;
-}
+  }
 
-button{
+  button {
     z-index: 1;
-
-}
-`
+  }
+`;
 
 const Wrap = styled.div`
 cursor: pointer;
@@ -68,4 +66,4 @@ img{
         border: 4px solid rgba(249, 249, 249, 0.8);
     }
 }
-`
+`;
